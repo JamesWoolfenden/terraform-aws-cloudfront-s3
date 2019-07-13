@@ -1,10 +1,10 @@
 resource "aws_cloudfront_distribution" "website" {
   origin {
-    domain_name = "${aws_s3_bucket.website.bucket_regional_domain_name}"
+    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
     origin_id   = "${aws_s3_bucket.website.id}-origin"
 
     s3_origin_config {
-      origin_access_identity = "${aws_cloudfront_origin_access_identity.website.cloudfront_access_identity_path}"
+      origin_access_identity = aws_cloudfront_origin_access_identity.website.cloudfront_access_identity_path
     }
   }
 
@@ -23,7 +23,7 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   aliases = [
-    "${var.fqdn}",
+    var.fqdn,
   ]
 
   default_cache_behavior {
@@ -67,7 +67,7 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "${data.aws_acm_certificate.website.arn}"
+    acm_certificate_arn = data.aws_acm_certificate.website.arn
     ssl_support_method  = "sni-only"
   }
 }

@@ -1,17 +1,17 @@
 variable "common_tags" {
-  type = "map"
+  type = map
 }
 
 variable "fqdn" {
-  type = "string"
+  type = string
 }
 
 variable "domain" {
-  type        = "string"
+  type        = string
   description = "The domain name"
 }
 
 variable "web_acl_name" {
-  type        = "string"
+  type        = string
   description = "Web acl name"
 }
