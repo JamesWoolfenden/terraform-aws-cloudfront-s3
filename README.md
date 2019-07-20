@@ -1,1 +1,3 @@
 # terraform-aws-cloudfront-s3
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

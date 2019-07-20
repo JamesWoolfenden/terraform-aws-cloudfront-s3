@@ -2,4 +2,4 @@ common_tags = {
   name = "exampleA"
 }
 
-fqdn="example.com"
+fqdn = "example.com"
