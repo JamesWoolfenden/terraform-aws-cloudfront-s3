@@ -16,7 +16,7 @@ init:
 	$(RM)
 	terraform init -reconfigure
 
-plan: 
+plan:
 	terraform plan -refresh=true
 
 p:
@@ -24,7 +24,7 @@ p:
 
 apply: build
 
-build: 
+build:
 	terraform apply -auto-approve
 
 check: init
