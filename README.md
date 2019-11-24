@@ -5,18 +5,18 @@ Terraform module to provision infra .
 
 ## Usage
 
-Creates a static site with cloudfrotn distribution in front
+Creates a static site with cloudfront distribution in front
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| common\_tags | Implements the common tags scheme | map | n/a | yes |
-| domain | The domain name | string | n/a | yes |
-| fqdn | A fully qualified domain name (eg. ostl.dev.fibrenation.net) | string | n/a | yes |
-| ttl |  | string | `"300"` | no |
-| web\_acl\_name | Web acl name | string | n/a | yes |
+| common\_tags | Implements the common tags scheme | map | n/a | yes |
+| domain | The domain name | string | n/a | yes |
+| fqdn | A fully qualified domain name | string | n/a | yes |
+| ttl |  | string | `"300"` | no |
+| web\_acl\_name | Web acl name | string | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Related Projects
@@ -29,17 +29,17 @@ Check out these related projects.
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/JamesWoolfenden/terraform-aws-budget/issues).
+File a GitHub [issue](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/issues).
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-budget/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/issues) to report any bugs or file feature requests.
 
 ## Copyrights
 
-Copyright � 2019-2019 [Slalom, LLC](https://slalom.com)
+Copyright © 2019-2019 [Slalom, LLC](https://slalom.com)
 
 ## License
 
@@ -77,8 +77,8 @@ under the License.
 [linkedin]: https://www.linkedin.com/company/slalom-consulting/
 [twitter]: https://twitter.com/Slalom
 
-[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-budget&url=https://github.com/JamesWoolfenden/terraform-aws-budget
-[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-budget&url=https://github.com/JamesWoolfenden/terraform-aws-budget
-[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-budget
-[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/terraform-aws-budget
-[share_email]: mailto:?subject=terraform-aws-budget&body=https://github.com/JamesWoolfenden/terraform-aws-budget
+[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-cloudfront-s3&url=https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3
+[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-cloudfront-s3&url=https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3
+[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3
+[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3
+[share_email]: mailto:?subject=terraform-aws-budget&body=https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3

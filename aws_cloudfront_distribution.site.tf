@@ -70,4 +70,5 @@ resource "aws_cloudfront_distribution" "website" {
     acm_certificate_arn = data.aws_acm_certificate.website.arn
     ssl_support_method  = "sni-only"
   }
+  tags = var.common_tags
 }

@@ -1,6 +1,6 @@
 variable "fqdn" {
   type        = string
-  description = "A fully qualified domain name (eg. ostl.dev.fibrenation.net)"
+  description = "A fully qualified domain name"
 }
 
 variable "domain" {
