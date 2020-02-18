@@ -1,5 +1,5 @@
 common_tags = {
-  name = "exampleA"
+  name = "examplea"
 }
 
 fqdn         = "example.com"
