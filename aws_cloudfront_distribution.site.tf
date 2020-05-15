@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "website" {
     }
   }
 
-  web_acl_id = "${data.external.web-acl-id.result["WebACLId"]}"
+  web_acl_id = data.external.web-acl-id.result["WebACLId"]
 
   enabled         = true
   is_ipv6_enabled = true

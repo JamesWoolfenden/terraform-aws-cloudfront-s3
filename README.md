@@ -1,5 +1,12 @@
+[![Slalom][logo]](https://slalom.com)
 
-# terraform-aws-cloudfront-s3 [![Build Status](https://travis-ci.com/JamesWoolfenden/terraform-aws-cloudfront-s3.svg?branch=master)](https://travis-ci.com/JamesWoolfenden/terraform-aws-cloudfront-s3) [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-cloudfront-s3.svg)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/releases/latest)[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+# terraform-aws-cloudfront-s3
+
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3)
+[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-cloudfront-s3.svg)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/releases/latest)
+
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
 Terraform module to provision infra .
 
@@ -28,10 +35,14 @@ module "ca" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
+| access\_log\_bucket | Name of your access logging bucket | `string` | `"access_log_record"` | no |
+| bucket\_acl | n/a | `string` | `"Private"` | no |
 | common\_tags | Implements the common tags scheme | `map` | n/a | yes |
 | domain | The domain name | `string` | n/a | yes |
+| force\_destroy | n/a | `bool` | `true` | no |
 | fqdn | A fully qualified domain name | `string` | n/a | yes |
 | ttl | n/a | `string` | `"300"` | no |
+| versioning | Switch to control versioning | `bool` | `true` | no |
 | web\_acl\_name | Web acl name | `string` | n/a | yes |
 
 ## Outputs
