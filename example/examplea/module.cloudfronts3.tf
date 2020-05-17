@@ -1,4 +1,4 @@
-module "cloudfronts3" {
+module "cloudfront" {
   source       = "../../"
   common_tags  = var.common_tags
   fqdn         = var.fqdn
