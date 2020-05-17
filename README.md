@@ -4,11 +4,10 @@
 
 [![Build Status](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-cloudfront-s3.svg)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/releases/latest)
-
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
-Terraform module to provision infra .
+Terraform module to provision a website that sits behind a cloudfront distribution.
 
 ## Usage
 
@@ -50,6 +49,15 @@ module "ca" {
 No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Checkov Exclusion
+
+I have added:
+```checkov
+  #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
+  #checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+```
+As we will want to deploy to this bucket and it needs to be readable to the world if it's a website.
+
 ## Related Projects
 
 Check out these related projects.
