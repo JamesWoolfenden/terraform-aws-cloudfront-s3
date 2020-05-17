@@ -1,3 +1,3 @@
-outputs "cloudfront" {
+output "cloudfront" {
    value=module.cloudfront
 }
