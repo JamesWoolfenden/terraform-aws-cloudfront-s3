@@ -14,12 +14,13 @@ Terraform module to provision a website that sits behind a cloudfront distributi
 Creates a static site with cloudfront distribution in front
 
 ```hcl
-module "ca" {
-  source                  = "JamesWoolfenden/certificate-authority/aws"
-  version                 = "0.2.12"
-  algorithm               = var.algorithm
-  subject                 = var.subject
-  common_tags             = var.common_tags
+module "cloudfront" {
+  source       = "JamesWoolfenden/certificate-authority/aws"
+  version      = "0.2.12"
+  common_tags  = var.common_tags
+  fqdn         = var.fqdn
+  domain       = var.domain
+  web_acl_name = var.web_acl_name
 }
 ```
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
