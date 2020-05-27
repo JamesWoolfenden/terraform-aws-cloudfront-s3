@@ -7,11 +7,11 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
-Terraform module to provision a private S3 bucket as a static website that sits behind a Cloudfront distribution.
+This Terraform module is to provision a private S3 bucket, and use it as a static website, and sit that behind a Cloudfront distribution.
 
 ## Usage
 
-Creates a static site with cloudfront distribution in front
+Creates a static site with cloudfront distribution in front, add a file **module.cloudfront.tf** to your template:
 
 ```hcl
 module "cloudfront" {
@@ -22,7 +22,7 @@ module "cloudfront" {
 }
 ```
 
-The default ttl values have been set very low, you will override these, for a more effective cache.
+The default ttl values have been set very low, you will override these (but os so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
