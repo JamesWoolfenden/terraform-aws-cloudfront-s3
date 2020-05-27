@@ -18,45 +18,58 @@ module "cloudfront" {
   source       = "JamesWoolfenden/certificate-authority/aws"
   version      = "0.2.12"
   common_tags  = var.common_tags
-  fqdn         = var.fqdn
   domain       = var.domain
-  web_acl_name = var.web_acl_name
 }
 ```
+
+The default ttl values have been set very low, you will override these, for a more effective cache.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
 
 | Name | Version |
 |------|---------|
 | aws | n/a |
-| external | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
-| access\_log\_bucket | Name of your access logging bucket | `string` | `"access_log_record"` | no |
+| access\_log\_bucket | Name of your access logging bucket | `string` | `"logging"` | no |
+| acm\_certificate\_arn | The ARN of the certificate to be used | `string` | `""` | no |
 | bucket\_acl | n/a | `string` | `"Private"` | no |
+| bucket\_name | name of the bucket | `string` | n/a | yes |
+| cloudfront\_default\_certificate | use default SSL certificate | `bool` | `true` | no |
 | common\_tags | Implements the common tags scheme | `map` | n/a | yes |
-| domain | The domain name | `string` | n/a | yes |
+| default\_ttl | default ttl values | `number` | `90` | no |
 | force\_destroy | n/a | `bool` | `true` | no |
-| fqdn | A fully qualified domain name | `string` | n/a | yes |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
+| max\_ttl | max ttl values | `number` | `300` | no |
+| min\_ttl | min ttl values | `number` | `30` | no |
+| price\_class | n/a | `string` | `"PriceClass_100"` | no |
 | ttl | n/a | `string` | `"300"` | no |
 | versioning | Switch to control versioning | `bool` | `true` | no |
-| web\_acl\_name | Web acl name | `string` | n/a | yes |
+| web\_acl\_id | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| bucket | n/a |
+| distribution | n/a |
+| identity | n/a |
+| logging | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Checkov Exclusion
 
 I have added:
+
 ```checkov
   #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
   #checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
 ```
+
 As we will want to deploy to this bucket and it needs to be readable to the world if it's a website.
 
 ## Related Projects

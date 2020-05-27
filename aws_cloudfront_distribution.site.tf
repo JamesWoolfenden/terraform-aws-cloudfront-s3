@@ -8,7 +8,7 @@ resource "aws_cloudfront_distribution" "website" {
     }
   }
 
-  web_acl_id = data.external.web-acl-id.result["WebACLId"]
+  web_acl_id = var.web_acl_id
 
   enabled         = true
   is_ipv6_enabled = true
@@ -22,9 +22,15 @@ resource "aws_cloudfront_distribution" "website" {
     response_page_path    = "/index.html"
   }
 
-  aliases = [
+  /*aliases = [
     var.fqdn,
-  ]
+  ]*/
+
+  logging_config {
+    bucket          = aws_s3_bucket.logging.bucket_domain_name
+    include_cookies = false
+    prefix          = "cloudfront/"
+  }
 
   default_cache_behavior {
     allowed_methods = [
@@ -45,30 +51,29 @@ resource "aws_cloudfront_distribution" "website" {
       }
     }
 
-    min_ttl     = 0
-    default_ttl = 0
-    max_ttl     = 0
+    min_ttl     = var.min_ttl
+    default_ttl = var.default_ttl
+    max_ttl     = var.max_ttl
 
     target_origin_id       = "${aws_s3_bucket.website.id}-origin"
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  price_class = "PriceClass_100"
+  price_class = var.price_class
 
   restrictions {
     geo_restriction {
       restriction_type = "whitelist"
 
-      locations = [
-        "GB",
-        "IE",
-      ]
+      locations = var.locations
     }
   }
 
   viewer_certificate {
-    acm_certificate_arn = data.aws_acm_certificate.website.arn
-    ssl_support_method  = "sni-only"
+    cloudfront_default_certificate = var.cloudfront_default_certificate
+    acm_certificate_arn            = var.acm_certificate_arn
+    #ssl_support_method             = "sni-only"
+    minimum_protocol_version = "TLSv1"
   }
   tags = var.common_tags
 }
