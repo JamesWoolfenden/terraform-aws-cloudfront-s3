@@ -7,7 +7,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
-Terraform module to provision a website that sits behind a cloudfront distribution.
+Terraform module to provision a private S3 bucket as a static website that sits behind a Cloudfront distribution.
 
 ## Usage
 
@@ -15,10 +15,10 @@ Creates a static site with cloudfront distribution in front
 
 ```hcl
 module "cloudfront" {
-  source       = "JamesWoolfenden/certificate-authority/aws"
-  version      = "0.2.12"
-  common_tags  = var.common_tags
-  domain       = var.domain
+  source       = "JamesWoolfenden/cloudfront-s3/aws"
+  version      = "0.3.1"
+  common_tags = var.common_tags
+  bucket_name = var.bucket_name
 }
 ```
 
@@ -71,6 +71,7 @@ I have added:
 ```
 
 As we will want to deploy to this bucket and it needs to be readable to the world if it's a website.
+There are also some exceptions on the logging bucket, e.g. logging of the logging bucket.
 
 ## Related Projects
 
