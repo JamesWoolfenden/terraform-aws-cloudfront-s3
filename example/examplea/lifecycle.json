@@ -1,0 +1,20 @@
+{
+  "Rules": [
+    {
+      "AbortIncompleteMultipartUpload": {
+        "DaysAfterInitiation": 7
+      },
+      "Expiration": {
+        "Days": 31
+      },
+      "Filter": {
+        "Prefix": ""
+      },
+      "ID": "cleanout",
+      "NoncurrentVersionExpiration": {
+        "NoncurrentDays": 31
+      },
+      "Status": "Enabled"
+    }
+  ]
+}

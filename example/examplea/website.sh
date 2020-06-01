@@ -11,3 +11,4 @@ aws s3api put-bucket-logging --bucket $bucket --bucket-logging-status file://log
 aws s3api put-bucket-versioning --bucket $bucket --versioning-configuration Status=Enabled
 aws s3api put-bucket-website --bucket $bucket --website-configuration file://website.json
 aws s3api put-bucket-cors --bucket $bucket --cors-configuration file://cors.json
+aws s3api put-bucket-lifecycle-configuration --bucket $logging_bucket --lifecycle-configuration  file://lifecycle.json
