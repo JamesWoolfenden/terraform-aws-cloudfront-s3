@@ -55,10 +55,8 @@ The default ttl values have been set very low, you will override these (but os s
 
 | Name | Description |
 |------|-------------|
-| bucket | n/a |
 | distribution | n/a |
 | identity | n/a |
-| logging | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Checkov Exclusion

@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "website" {
 
   website {
     index_document = "index.html"
-    error_document = "index.html"
+    error_document = "404.html"
   }
 
   cors_rule {
