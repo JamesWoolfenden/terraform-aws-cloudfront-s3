@@ -1,7 +1,7 @@
 resource "aws_cloudfront_distribution" "website" {
   origin {
-    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
-    origin_id   = "${aws_s3_bucket.website.id}-origin"
+    domain_name = data.aws_s3_bucket.website.bucket_regional_domain_name
+    origin_id   = "${data.aws_s3_bucket.website.id}-origin"
 
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.website.cloudfront_access_identity_path
@@ -27,7 +27,7 @@ resource "aws_cloudfront_distribution" "website" {
   ]*/
 
   logging_config {
-    bucket          = aws_s3_bucket.logging.bucket_domain_name
+    bucket          = data.aws_s3_bucket.logging.bucket_domain_name
     include_cookies = false
     prefix          = "cloudfront/"
   }
@@ -55,7 +55,7 @@ resource "aws_cloudfront_distribution" "website" {
     default_ttl = var.default_ttl
     max_ttl     = var.max_ttl
 
-    target_origin_id       = "${aws_s3_bucket.website.id}-origin"
+    target_origin_id       = "${data.aws_s3_bucket.website.id}-origin"
     viewer_protocol_policy = "redirect-to-https"
   }
 

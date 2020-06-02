@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "cloudfront" {
     ]
 
     resources = [
-      "${aws_s3_bucket.website.arn}/*",
+      "${data.aws_s3_bucket.website.arn}/*",
     ]
 
     principals {
@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "cloudfront" {
     ]
 
     resources = [
-      "${aws_s3_bucket.website.arn}",
+      "${data.aws_s3_bucket.website.arn}",
     ]
 
     principals {
