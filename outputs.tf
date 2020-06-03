@@ -5,3 +5,7 @@ output "distribution" {
 output "identity" {
   value = aws_cloudfront_origin_access_identity.website
 }
+
+output "policy" {
+  value = data.aws_iam_policy_document.cloudfront.json
+}

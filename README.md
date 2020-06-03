@@ -43,7 +43,7 @@ The default ttl values have been set very low, you will override these (but os s
 | common\_tags | Implements the common tags scheme | `map` | n/a | yes |
 | default\_ttl | default ttl values | `number` | `90` | no |
 | force\_destroy | n/a | `bool` | `true` | no |
-| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]<br></pre> | no |
 | max\_ttl | max ttl values | `number` | `300` | no |
 | min\_ttl | min ttl values | `number` | `30` | no |
 | price\_class | n/a | `string` | `"PriceClass_100"` | no |
@@ -57,6 +57,7 @@ The default ttl values have been set very low, you will override these (but os s
 |------|-------------|
 | distribution | n/a |
 | identity | n/a |
+| policy | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Checkov Exclusion
