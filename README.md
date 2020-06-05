@@ -13,6 +13,10 @@ This Terraform module is to provision a private S3 bucket, and use it as a stati
 
 Creates a static site with cloudfront distribution in front, add a file **module.cloudfront.tf** to your template:
 
+![alt text](./diagram/static_site.png)
+
+To use, add **module.cloudfront.tf** to your template and update your variables and values, see *examplea* for a worked example.
+
 ```hcl
 module "cloudfront" {
   source       = "JamesWoolfenden/cloudfront-s3/aws"
@@ -125,6 +129,7 @@ under the License.
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
 [logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
+[architecture]: file://diagram/static_site.png
 [website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
 [linkedin]: https://www.linkedin.com/company/slalom-consulting/
