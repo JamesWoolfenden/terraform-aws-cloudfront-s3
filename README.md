@@ -26,11 +26,12 @@ module "cloudfront" {
 }
 ```
 
-The default ttl values have been set very low, you will override these (but os so helpful for development), for a more effective cache.
+The default ttl values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-Error: no lines in file
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 ## Checkov Exclusion
 
 I have added:
