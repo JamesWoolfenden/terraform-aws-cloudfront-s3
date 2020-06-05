@@ -29,6 +29,40 @@ module "cloudfront" {
 The default ttl values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| access\_log\_bucket | Name of your access logging bucket | `string` | `"logging"` | no |
+| acm\_certificate\_arn | The ARN of the certificate to be used | `string` | `""` | no |
+| bucket\_acl | n/a | `string` | `"Private"` | no |
+| bucket\_name | name of the bucket | `string` | n/a | yes |
+| cloudfront\_default\_certificate | use default SSL certificate | `bool` | `true` | no |
+| common\_tags | Implements the common tags scheme | `map` | n/a | yes |
+| default\_ttl | default ttl values | `number` | `90` | no |
+| force\_destroy | n/a | `bool` | `true` | no |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
+| max\_ttl | max ttl values | `number` | `300` | no |
+| min\_ttl | min ttl values | `number` | `30` | no |
+| price\_class | n/a | `string` | `"PriceClass_100"` | no |
+| ttl | n/a | `string` | `"300"` | no |
+| versioning | Switch to control versioning | `bool` | `true` | no |
+| web\_acl\_id | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| bucket | n/a |
+| distribution | n/a |
+| identity | n/a |
+| logging | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -96,7 +130,6 @@ under the License.
 [jameswoolfenden_homepage]: https://github.com/jameswoolfenden
 [jameswoolfenden_avatar]: https://github.com/jameswoolfenden.png?size=150
 [logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
-[architecture]: file://diagram/static_site.png
 [website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
 [linkedin]: https://www.linkedin.com/company/slalom-consulting/

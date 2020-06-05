@@ -1,13 +1,8 @@
-/*variable "fqdn" {
-  type        = string
-  description = "A fully qualified domain name"
-}*/
 
 variable "force_destroy" {
   type    = bool
   default = true
 }
-
 
 variable "common_tags" {
   type        = map
