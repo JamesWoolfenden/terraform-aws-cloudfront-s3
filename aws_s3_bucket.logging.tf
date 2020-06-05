@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "logging" {
   #checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
   #checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
   #checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
-  #bucket        = var.fqdn
+
   bucket        = "${var.bucket_name}-${var.access_log_bucket}"
   acl           = "log-delivery-write"
   force_destroy = var.force_destroy

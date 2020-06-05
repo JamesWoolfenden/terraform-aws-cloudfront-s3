@@ -1,9 +1,8 @@
 resource "aws_s3_bucket" "website" {
   #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
   #checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
-  #bucket        = var.fqdn
-  bucket = var.bucket_name
-  #acl           = var.bucket_acl
+
+  bucket        = var.bucket_name
   force_destroy = var.force_destroy
 
   versioning {
