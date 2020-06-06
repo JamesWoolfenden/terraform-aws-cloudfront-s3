@@ -29,6 +29,10 @@ module "cloudfront" {
 The default ttl values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -38,7 +42,7 @@ The default ttl values have been set very low, you will override these (but oh s
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | access\_log\_bucket | Name of your access logging bucket | `string` | `"logging"` | no |
 | acm\_certificate\_arn | The ARN of the certificate to be used | `string` | `""` | no |
 | bucket\_acl | n/a | `string` | `"Private"` | no |
