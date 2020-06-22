@@ -8,6 +8,7 @@
 [![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
 This Terraform module is to provision a private S3 bucket, and use it as a static website, and sit that behind a Cloudfront distribution.
+Certificate needs a delay adding before cloudfron uses it, until then run it twice.
 
 ## Usage
 
@@ -30,6 +31,7 @@ The default ttl values have been set very low, you will override these (but os s
 | Name | Version |
 |------|---------|
 | aws | n/a |
+| aws.useastone | n/a |
 
 ## Inputs
 
@@ -39,14 +41,16 @@ The default ttl values have been set very low, you will override these (but os s
 | acm\_certificate\_arn | The ARN of the certificate to be used | `string` | `""` | no |
 | bucket\_acl | n/a | `string` | `"Private"` | no |
 | bucket\_name | name of the bucket | `string` | n/a | yes |
-| cloudfront\_default\_certificate | use default SSL certificate | `bool` | `true` | no |
+| cloudfront\_default\_certificate | use default SSL certificate | `bool` | `false` | no |
 | common\_tags | Implements the common tags scheme | `map` | n/a | yes |
 | default\_ttl | default ttl values | `number` | `90` | no |
 | force\_destroy | n/a | `bool` | `true` | no |
-| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]<br></pre> | no |
+| fqdn | The fully qualified domain Name | `string` | n/a | yes |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
 | max\_ttl | max ttl values | `number` | `300` | no |
 | min\_ttl | min ttl values | `number` | `30` | no |
 | price\_class | n/a | `string` | `"PriceClass_100"` | no |
+| sse\_algorithm | The type of encryption algorithm to use | `string` | `"aws:kms"` | no |
 | ttl | n/a | `string` | `"300"` | no |
 | versioning | Switch to control versioning | `bool` | `true` | no |
 | web\_acl\_id | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""` | no |
@@ -57,7 +61,9 @@ The default ttl values have been set very low, you will override these (but os s
 |------|-------------|
 | distribution | n/a |
 | identity | n/a |
+| logging | n/a |
 | policy | n/a |
+| website | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Checkov Exclusion

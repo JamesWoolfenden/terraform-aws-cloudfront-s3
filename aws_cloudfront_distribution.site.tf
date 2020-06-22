@@ -1,7 +1,8 @@
 resource "aws_cloudfront_distribution" "website" {
+  provider = aws.useastone
   origin {
-    domain_name = data.aws_s3_bucket.website.bucket_regional_domain_name
-    origin_id   = "${data.aws_s3_bucket.website.id}-origin"
+    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
+    origin_id   = "${aws_s3_bucket.website.id}-origin"
 
     s3_origin_config {
       origin_access_identity = aws_cloudfront_origin_access_identity.website.cloudfront_access_identity_path
@@ -22,12 +23,12 @@ resource "aws_cloudfront_distribution" "website" {
     response_page_path    = "/index.html"
   }
 
-  /*aliases = [
-    var.fqdn,
-  ]*/
+  aliases = [
+    var.fqdn
+  ]
 
   logging_config {
-    bucket          = data.aws_s3_bucket.logging.bucket_domain_name
+    bucket          = aws_s3_bucket.logging.bucket_domain_name
     include_cookies = false
     prefix          = "cloudfront/"
   }
@@ -55,7 +56,7 @@ resource "aws_cloudfront_distribution" "website" {
     default_ttl = var.default_ttl
     max_ttl     = var.max_ttl
 
-    target_origin_id       = "${data.aws_s3_bucket.website.id}-origin"
+    target_origin_id       = "${aws_s3_bucket.website.id}-origin"
     viewer_protocol_policy = "redirect-to-https"
   }
 
@@ -71,9 +72,10 @@ resource "aws_cloudfront_distribution" "website" {
 
   viewer_certificate {
     cloudfront_default_certificate = var.cloudfront_default_certificate
-    acm_certificate_arn            = var.acm_certificate_arn
-    #ssl_support_method             = "sni-only"
-    minimum_protocol_version = "TLSv1"
+    acm_certificate_arn            = aws_acm_certificate.cert.arn
+    ssl_support_method             = "sni-only"
+    minimum_protocol_version       = "TLSv1.2_2018"
   }
+
   tags = var.common_tags
 }

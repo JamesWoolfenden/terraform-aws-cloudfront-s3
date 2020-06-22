@@ -1,8 +1,3 @@
-/*variable "fqdn" {
-  type        = string
-  description = "A fully qualified domain name"
-}*/
-
 variable "force_destroy" {
   type    = bool
   default = true
@@ -42,8 +37,6 @@ variable "acm_certificate_arn" {
   description = "The ARN of the certificate to be used"
 }
 
-
-
 variable "locations" {
   description = "Locations for the Distribution"
   type        = list
@@ -59,7 +52,7 @@ variable "web_acl_id" {
 variable "cloudfront_default_certificate" {
   description = "use default SSL certificate"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "price_class" {
@@ -90,4 +83,15 @@ variable "max_ttl" {
   description = "max ttl values"
   type        = number
   default     = 300
+}
+
+variable "fqdn" {
+  type        = string
+  description = "The fully qualified domain Name"
+}
+
+variable "sse_algorithm" {
+  type        = string
+  description = "The type of encryption algorithm to use"
+  default     = "aws:kms"
 }

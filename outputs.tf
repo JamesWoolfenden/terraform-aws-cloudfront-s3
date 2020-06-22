@@ -9,3 +9,11 @@ output "identity" {
 output "policy" {
   value = data.aws_iam_policy_document.cloudfront.json
 }
+
+output "website" {
+  value = aws_s3_bucket.website
+}
+
+output "logging" {
+  value = aws_s3_bucket.logging
+}

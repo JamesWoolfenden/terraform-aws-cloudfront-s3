@@ -2,4 +2,5 @@ common_tags = {
   name = "examplea"
 }
 
-bucket_name = "private-bucket-jgw-test"
+bucket_name = "marvel-web-dev"
+fqdn        = "examplea.example.com"

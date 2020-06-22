@@ -7,3 +7,8 @@ variable "bucket_name" {
   type        = string
   description = "name of the bucket"
 }
+
+variable "fqdn" {
+  type        = string
+  description = "The fully qualified domain Name"
+}
