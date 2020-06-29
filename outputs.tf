@@ -6,7 +6,11 @@ output "identity" {
   value = aws_cloudfront_origin_access_identity.website
 }
 
-output "bucket" {
+output "policy" {
+  value = data.aws_iam_policy_document.cloudfront.json
+}
+
+output "website" {
   value = aws_s3_bucket.website
 }
 

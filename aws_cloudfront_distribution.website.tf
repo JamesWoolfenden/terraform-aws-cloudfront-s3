@@ -1,4 +1,5 @@
 resource "aws_cloudfront_distribution" "website" {
+  provider = aws.useastone
   origin {
     domain_name = aws_s3_bucket.website.bucket_regional_domain_name
     origin_id   = "${aws_s3_bucket.website.id}-origin"
@@ -22,9 +23,9 @@ resource "aws_cloudfront_distribution" "website" {
     response_page_path    = "/index.html"
   }
 
-  /*aliases = [
-    var.fqdn,
-  ]*/
+  aliases = [
+    var.fqdn
+  ]
 
   logging_config {
     bucket          = aws_s3_bucket.logging.bucket_domain_name
@@ -71,9 +72,10 @@ resource "aws_cloudfront_distribution" "website" {
 
   viewer_certificate {
     cloudfront_default_certificate = var.cloudfront_default_certificate
-    acm_certificate_arn            = var.acm_certificate_arn
-    #ssl_support_method             = "sni-only"
-    minimum_protocol_version = "TLSv1"
+    acm_certificate_arn            = aws_acm_certificate.cert.arn
+    ssl_support_method             = "sni-only"
+    minimum_protocol_version       = "TLSv1.2_2018"
   }
+
   tags = var.common_tags
 }

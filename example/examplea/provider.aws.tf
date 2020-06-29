@@ -1,7 +1,12 @@
 provider "aws" {
   version = "2.64.0"
   region  = "eu-west-1"
-  profile = "aws-labs"
+}
+
+provider "aws" {
+  alias   = "useastone"
+  version = "2.64.0"
+  region  = "us-east-1"
 }
 
 provider "external" {

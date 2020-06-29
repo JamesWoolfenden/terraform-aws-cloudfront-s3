@@ -6,8 +6,12 @@ output "identity" {
   value = module.cloudfront.identity
 }
 
-output "bucket" {
-  value = module.cloudfront.bucket
+output "policy" {
+  value = module.cloudfront.policy
+}
+
+output "website" {
+  value = module.cloudfront.website
 }
 
 output "logging" {

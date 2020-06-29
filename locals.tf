@@ -1,0 +1,3 @@
+locals {
+  zone = "${var.fqdn}."
+}
