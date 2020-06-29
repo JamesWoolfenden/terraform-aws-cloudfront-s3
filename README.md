@@ -46,7 +46,7 @@ The default ttl values have been set very low, you will override these (but os s
 | default\_ttl | default ttl values | `number` | `90` | no |
 | force\_destroy | n/a | `bool` | `true` | no |
 | fqdn | The fully qualified domain Name | `string` | n/a | yes |
-| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]<br></pre> | no |
 | max\_ttl | max ttl values | `number` | `300` | no |
 | min\_ttl | min ttl values | `number` | `30` | no |
 | price\_class | n/a | `string` | `"PriceClass_100"` | no |
