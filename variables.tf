@@ -3,7 +3,6 @@ variable "force_destroy" {
   default = true
 }
 
-
 variable "common_tags" {
   type        = map
   description = "Implements the common tags scheme"

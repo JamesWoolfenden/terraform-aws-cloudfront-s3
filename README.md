@@ -12,7 +12,11 @@ Certificate needs a delay adding before cloudfron uses it, until then run it twi
 
 ## Usage
 
-Creates a static site with cloudfront distribution in front, add a file **module.cloudfront.tf** to your template:
+Creates a static site with cloudfront distribution in front.
+
+![alt text](./diagram/static_site.png)
+
+To use, add **module.cloudfront.tf** to your template and update your variables and values, see *example/examplea* for a full worked example.
 
 ```hcl
 module "cloudfront" {
@@ -23,7 +27,7 @@ module "cloudfront" {
 }
 ```
 
-The default ttl values have been set very low, you will override these (but os so helpful for development), for a more effective cache.
+The default ttl values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
@@ -46,7 +50,7 @@ The default ttl values have been set very low, you will override these (but os s
 | default\_ttl | default ttl values | `number` | `90` | no |
 | force\_destroy | n/a | `bool` | `true` | no |
 | fqdn | The fully qualified domain Name | `string` | n/a | yes |
-| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]<br></pre> | no |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
 | max\_ttl | max ttl values | `number` | `300` | no |
 | min\_ttl | min ttl values | `number` | `30` | no |
 | price\_class | n/a | `string` | `"PriceClass_100"` | no |
@@ -66,6 +70,7 @@ The default ttl values have been set very low, you will override these (but os s
 | website | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 ## Checkov Exclusion
 
 I have added:
@@ -132,8 +137,8 @@ under the License.
 [logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
 [website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
-[linkedin]: https://www.linkedin.com/company/slalom-consulting/
-[twitter]: https://twitter.com/Slalom
+[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
+[twitter]: https://twitter.com/JimWoolfenden
 [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-certificate-authority&url=https://github.com/JamesWoolfenden/terraform-aws-certificate-authority
 [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-certificate-authority&url=https://github.com/JamesWoolfenden/terraform-aws-certificate-authority
 [share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-certificate-authority
