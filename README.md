@@ -83,6 +83,11 @@ I have added:
 As we will want to deploy to this bucket and it needs to be readable to the world if it's a website.
 There are also some exceptions on the logging bucket, e.g. logging of the logging bucket.
 
+## new checks
+
+Address
+<https://github.com/bridgecrewio/checkov/issues/146>
+
 ## Related Projects
 
 Check out these related projects.
