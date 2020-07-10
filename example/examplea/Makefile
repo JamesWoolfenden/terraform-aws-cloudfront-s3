@@ -37,8 +37,8 @@ docs:
 	terraform-docs md . > README.md
 
 valid:
-	tflint
 	terraform fmt -check=true -diff=true
+	checkov -d . --external-checks-dir ../../checkov
 
 target:
 	@read -p "Enter Module to target:" MODULE;

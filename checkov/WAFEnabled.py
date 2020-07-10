@@ -1,24 +1,21 @@
-from checkov.common.models.enums import CheckResult, CheckCategories
-from checkov.terraform.checks.resource.base_resource_check import BaseResourceCheck
+from checkov.common.models.enums import CheckCategories
+from checkov.common.models.consts import ANY_VALUE
+from checkov.terraform.checks.resource.base_resource_value_check import BaseResourceValueCheck
 
 
-class WAFEnabled(BaseResourceCheck):
+class WAFEnabled(BaseResourceValueCheck):
     def __init__(self):
         name = "CloudFront Distribution should have WAF enabled"
-        id = "CKV_AWS_999"
+        id = "CKV_AWS_68"
         supported_resources = ['aws_cloudfront_distribution']
         categories = [CheckCategories.ENCRYPTION]
         super().__init__(name=name, id=id, categories=categories, supported_resources=supported_resources)
 
-    def scan_resource_conf(self, conf):
-        if "web_acl_id" in conf.keys():
-            if (conf["web_acl_id"][0] != ""):
-                return CheckResult.PASSED
-            else:
-                return CheckResult.FAILED
-        else:
-            return CheckResult.FAILED
+    def get_inspected_key(self):
+        return 'web_acl_id'
 
+    def get_expected_values(self):
+        return [ANY_VALUE]
 
 
 check = WAFEnabled()
