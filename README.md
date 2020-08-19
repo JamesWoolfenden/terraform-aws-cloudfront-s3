@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-cloudfront-s3.svg)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
+[![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
 This Terraform module is to provision a private S3 bucket, and use it as a static website, and sit that behind a Cloudfront distribution.
 Certificate needs a delay adding before cloudfron uses it, until then run it twice.
@@ -21,7 +21,7 @@ To use, add **module.cloudfront.tf** to your template and update your variables 
 ```hcl
 module "cloudfront" {
   source       = "JamesWoolfenden/cloudfront-s3/aws"
-  version      = "0.3.1"
+  version      = "0.3.2"
   common_tags = var.common_tags
   bucket_name = var.bucket_name
 }
@@ -30,6 +30,10 @@ module "cloudfront" {
 The default ttl values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -40,7 +44,7 @@ The default ttl values have been set very low, you will override these (but oh s
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | access\_log\_bucket | Name of your access logging bucket | `string` | `"logging"` | no |
 | acm\_certificate\_arn | The ARN of the certificate to be used | `string` | `""` | no |
 | bucket\_acl | n/a | `string` | `"Private"` | no |

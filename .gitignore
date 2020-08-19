@@ -10,7 +10,6 @@ __pycache__/
 .idea
 *.iml
 *.orig
-
 *.ini
 *~HEAD
 *backup
@@ -19,5 +18,6 @@ tmp
 lambda
 *~HEAD
 *backup
+id_rsa*
 *.bak
 .terraform.tfstate.lock.info
