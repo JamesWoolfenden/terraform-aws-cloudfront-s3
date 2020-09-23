@@ -1,4 +1,4 @@
 data "aws_route53_zone" "selected" {
-  name         = local.zone
+  name         = var.zone
   private_zone = false
 }

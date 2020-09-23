@@ -89,6 +89,11 @@ variable "fqdn" {
   description = "The fully qualified domain Name"
 }
 
+variable "zone" {
+  type        = string
+  description = "The route53 zone to use"
+}
+
 variable "sse_algorithm" {
   type        = string
   description = "The type of encryption algorithm to use"
