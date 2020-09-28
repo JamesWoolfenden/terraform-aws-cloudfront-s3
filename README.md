@@ -28,49 +28,48 @@ module "cloudfront" {
 The default ttl values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 ## Requirements
 
 No requirements.
 
 ## Providers
 
-| Name          | Version |
-| ------------- | ------- |
-| aws           | n/a     |
-| aws.useastone | n/a     |
+| Name | Version |
+|------|---------|
+| aws | n/a |
+| aws.useastone | n/a |
 
 ## Inputs
 
-| Name                           | Description                                                                                     | Type     | Default                    | Required |
-| ------------------------------ | ----------------------------------------------------------------------------------------------- | -------- | -------------------------- | :------: |
-| access_log_bucket              | Name of your access logging bucket                                                              | `string` | `"logging"`                |    no    |
-| acm_certificate_arn            | The ARN of the certificate to be used                                                           | `string` | `""`                       |    no    |
-| bucket_acl                     | n/a                                                                                             | `string` | `"Private"`                |    no    |
-| bucket_name                    | name of the bucket                                                                              | `string` | n/a                        |   yes    |
-| cloudfront_default_certificate | use default SSL certificate                                                                     | `bool`   | `false`                    |    no    |
-| common_tags                    | Implements the common tags scheme                                                               | `map`    | n/a                        |   yes    |
-| default_ttl                    | default ttl values                                                                              | `number` | `90`                       |    no    |
-| force_destroy                  | n/a                                                                                             | `bool`   | `true`                     |    no    |
-| fqdn                           | The fully qualified domain Name                                                                 | `string` | n/a                        |   yes    |
-| locations                      | Locations for the Distribution                                                                  | `list`   | <pre>[<br> "GB"<br>]</pre> |    no    |
-| max_ttl                        | max ttl values                                                                                  | `number` | `300`                      |    no    |
-| min_ttl                        | min ttl values                                                                                  | `number` | `30`                       |    no    |
-| price_class                    | n/a                                                                                             | `string` | `"PriceClass_100"`         |    no    |
-| sse_algorithm                  | The type of encryption algorithm to use                                                         | `string` | `"aws:kms"`                |    no    |
-| ttl                            | n/a                                                                                             | `string` | `"300"`                    |    no    |
-| versioning                     | Switch to control versioning                                                                    | `bool`   | `true`                     |    no    |
-| web_acl_id                     | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""`                       |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| access\_log\_bucket | Name of your access logging bucket | `string` | `"logging"` | no |
+| acm\_certificate\_arn | The ARN of the certificate to be used | `string` | `""` | no |
+| bucket\_acl | n/a | `string` | `"Private"` | no |
+| bucket\_name | name of the bucket | `string` | n/a | yes |
+| cloudfront\_default\_certificate | use default SSL certificate | `bool` | `false` | no |
+| common\_tags | Implements the common tags scheme | `map` | n/a | yes |
+| default\_ttl | default ttl values | `number` | `90` | no |
+| force\_destroy | n/a | `bool` | `true` | no |
+| fqdn | The fully qualified domain Name | `string` | n/a | yes |
+| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
+| max\_ttl | max ttl values | `number` | `300` | no |
+| min\_ttl | min ttl values | `number` | `30` | no |
+| price\_class | n/a | `string` | `"PriceClass_100"` | no |
+| sse\_algorithm | The type of encryption algorithm to use | `string` | `"aws:kms"` | no |
+| ttl | n/a | `string` | `"300"` | no |
+| versioning | Switch to control versioning | `bool` | `true` | no |
+| web\_acl\_id | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""` | no |
 
 ## Outputs
 
-| Name         | Description |
-| ------------ | ----------- |
-| distribution | n/a         |
-| identity     | n/a         |
-| logging      | n/a         |
-| policy       | n/a         |
-| website      | n/a         |
+| Name | Description |
+|------|-------------|
+| distribution | n/a |
+| identity | n/a |
+| logging | n/a |
+| policy | n/a |
+| website | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
