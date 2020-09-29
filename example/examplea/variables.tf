@@ -12,3 +12,8 @@ variable "fqdn" {
   type        = string
   description = "The fully qualified domain Name"
 }
+
+variable "zone" {
+  type        = string
+  description = "zone is not always the root of fqdn"
+}

@@ -60,6 +60,7 @@ No requirements.
 | ttl | n/a | `string` | `"300"` | no |
 | versioning | Switch to control versioning | `bool` | `true` | no |
 | web\_acl\_id | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""` | no |
+| zone | The route53 zone to use | `string` | n/a | yes |
 
 ## Outputs
 

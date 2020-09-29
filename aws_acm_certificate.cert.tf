@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
   provider          = aws.useastone
-  domain_name       = local.zone
+  domain_name       = var.fqdn
   validation_method = "DNS"
 
   tags = var.common_tags
@@ -31,5 +31,5 @@ resource "aws_route53_record" "cert_validation" {
 resource "aws_acm_certificate_validation" "cert" {
   provider                = aws.useastone
   certificate_arn         = aws_acm_certificate.cert.arn
-  validation_record_fqdns = [aws_route53_record.cert_validation.0.fqdn]
+  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
 }
