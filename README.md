@@ -48,14 +48,15 @@ No requirements.
 | bucket\_acl | n/a | `string` | `"Private"` | no |
 | bucket\_name | name of the bucket | `string` | n/a | yes |
 | cloudfront\_default\_certificate | use default SSL certificate | `bool` | `false` | no |
-| common\_tags | Implements the common tags scheme | `map` | n/a | yes |
+| common\_tags | Implements the common tags scheme | `map(any)` | n/a | yes |
 | default\_ttl | default ttl values | `number` | `90` | no |
 | force\_destroy | n/a | `bool` | `true` | no |
 | fqdn | The fully qualified domain Name | `string` | n/a | yes |
-| locations | Locations for the Distribution | `list` | <pre>[<br>  "GB"<br>]</pre> | no |
+| locations | Locations for the Distribution | `list(any)` | <pre>[<br>  "GB"<br>]</pre> | no |
 | max\_ttl | max ttl values | `number` | `300` | no |
 | min\_ttl | min ttl values | `number` | `30` | no |
 | price\_class | n/a | `string` | `"PriceClass_100"` | no |
+| restriction\_type | n/a | `string` | `"whitelist"` | no |
 | sse\_algorithm | The type of encryption algorithm to use | `string` | `"aws:kms"` | no |
 | ttl | n/a | `string` | `"300"` | no |
 | versioning | Switch to control versioning | `bool` | `true` | no |

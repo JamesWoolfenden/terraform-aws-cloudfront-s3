@@ -4,7 +4,7 @@ variable "force_destroy" {
 }
 
 variable "common_tags" {
-  type        = map
+  type        = map(any)
   description = "Implements the common tags scheme"
 }
 
@@ -38,7 +38,7 @@ variable "acm_certificate_arn" {
 
 variable "locations" {
   description = "Locations for the Distribution"
-  type        = list
+  type        = list(any)
   default     = ["GB"]
 }
 
@@ -98,4 +98,13 @@ variable "sse_algorithm" {
   type        = string
   description = "The type of encryption algorithm to use"
   default     = "aws:kms"
+}
+
+variable "restriction_type" {
+  type    = string
+  default = "whitelist"
+  validation {
+    condition     = can(regex("none|whitelist|blacklist", var.restriction_type))
+    error_message = "Value must be none, whitelist or blacklist."
+  }
 }

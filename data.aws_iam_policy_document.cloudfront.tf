@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "cloudfront" {
       type = "AWS"
 
       identifiers = [
-        "${aws_cloudfront_origin_access_identity.website.iam_arn}",
+        aws_cloudfront_origin_access_identity.website.iam_arn,
       ]
     }
   }
@@ -23,14 +23,14 @@ data "aws_iam_policy_document" "cloudfront" {
     ]
 
     resources = [
-      "${aws_s3_bucket.website.arn}",
+      aws_s3_bucket.website.arn,
     ]
 
     principals {
       type = "AWS"
 
       identifiers = [
-        "${aws_cloudfront_origin_access_identity.website.iam_arn}",
+        aws_cloudfront_origin_access_identity.website.iam_arn,
       ]
     }
   }
