@@ -1,6 +1,5 @@
 provider "aws" {
   region                      = "eu-west-1"
-  version                     = "2.61"
   access_key                  = "mock_access_key"
   s3_force_path_style         = true
   secret_key                  = "mock_secret_key"
@@ -31,6 +30,11 @@ provider "aws" {
   }
 }
 
+
+provider "aws" {
+  alias  = "useastone"
+  region = "us-east-1"
+}
+
 provider "external" {
-  version = "1.2"
 }
