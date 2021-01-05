@@ -57,6 +57,7 @@ No requirements.
 | min\_ttl | min ttl values | `number` | `30` | no |
 | price\_class | n/a | `string` | `"PriceClass_100"` | no |
 | restriction\_type | n/a | `string` | `"whitelist"` | no |
+| retain | Do you want to retain the distribution on delete? | `bool` | `false` | no |
 | sse\_algorithm | The type of encryption algorithm to use | `string` | `"aws:kms"` | no |
 | ttl | n/a | `string` | `"300"` | no |
 | versioning | Switch to control versioning | `bool` | `true` | no |

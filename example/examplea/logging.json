@@ -1,6 +1,0 @@
-{
-  "LoggingEnabled": {
-    "TargetBucket": "private-bucket-jgw-test-logging",
-    "TargetPrefix": ""
-  }
-}
