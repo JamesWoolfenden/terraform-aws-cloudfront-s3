@@ -116,7 +116,8 @@ resource "aws_cloudfront_distribution" "website" {
     cloudfront_default_certificate = var.cloudfront_default_certificate
     acm_certificate_arn            = aws_acm_certificate.cert.arn
     ssl_support_method             = "sni-only"
-    minimum_protocol_version       = "TLSv1.2_2018"
+    # tfsec:ignore:AWS021
+    minimum_protocol_version = "TLSv1.2_2018"
   }
   retain_on_delete = var.retain
   tags             = var.common_tags

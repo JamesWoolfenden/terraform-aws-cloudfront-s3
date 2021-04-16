@@ -1,7 +1,10 @@
+# tfsec:ignore:AWS017
 resource "aws_s3_bucket" "website" {
-  #checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
-  #checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
-  #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
+  # checkov:skip=CKV_AWS_144: Its a website
+  # checkov:skip=CKV_AWS_145: Its a website
+  # checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+  # checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+  # checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
   bucket        = var.bucket_name
   acl           = "private"
   force_destroy = var.force_destroy

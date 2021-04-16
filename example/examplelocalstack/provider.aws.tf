@@ -1,6 +1,8 @@
 provider "aws" {
-  region                      = "eu-west-1"
-  access_key                  = "mock_access_key"
+  region = "eu-west-1"
+  # tfsec:ignore:AWS044
+  access_key = "mock_access_key"
+  # tfsec:ignore:GEN003
   s3_force_path_style         = true
   secret_key                  = "mock_secret_key"
   skip_credentials_validation = true
@@ -34,7 +36,4 @@ provider "aws" {
 provider "aws" {
   alias  = "useastone"
   region = "us-east-1"
-}
-
-provider "external" {
 }
