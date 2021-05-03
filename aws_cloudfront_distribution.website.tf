@@ -80,7 +80,7 @@ resource "aws_cloudfront_distribution" "website" {
     viewer_protocol_policy = "redirect-to-https"
   }
 
-  # Cache behavior with precedence 1
+  # Cache behaviour with precedence 1
   ordered_cache_behavior {
     path_pattern     = "/content/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]

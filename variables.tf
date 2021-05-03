@@ -108,6 +108,7 @@ variable "restriction_type" {
     error_message = "Value must be none, whitelist or blacklist."
   }
 }
+
 variable "retain" {
   type        = bool
   description = "Do you want to retain the distribution on delete?"
