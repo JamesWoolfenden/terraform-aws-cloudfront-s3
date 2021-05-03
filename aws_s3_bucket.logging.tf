@@ -1,5 +1,6 @@
 # tfsec:ignore:AWS077
 resource "aws_s3_bucket" "logging" {
+  # checkov:skip=CKV_AWS_145: ADD REASON
   # checkov:skip=CKV_AWS_144: ADD REASON
   # checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
   # checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
@@ -15,7 +16,7 @@ resource "aws_s3_bucket" "logging" {
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        sse_algorithm = var.sse_algorithm
+        sse_algorithm = "AES256"
       }
     }
   }
@@ -38,3 +39,4 @@ resource "aws_s3_bucket" "logging" {
 
   tags = var.common_tags
 }
+
