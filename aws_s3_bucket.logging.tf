@@ -39,4 +39,3 @@ resource "aws_s3_bucket" "logging" {
 
   tags = var.common_tags
 }
-
