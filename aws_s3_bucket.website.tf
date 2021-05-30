@@ -1,5 +1,6 @@
 # tfsec:ignore:AWS017
 resource "aws_s3_bucket" "website" {
+  # checkov:skip=CKV2_AWS_6: ADD REASON
   # checkov:skip=CKV_AWS_144: Its a website
   # checkov:skip=CKV_AWS_145: Its a website
   # checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"

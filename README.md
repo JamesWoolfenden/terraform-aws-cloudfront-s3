@@ -29,19 +29,109 @@ module "cloudfront" {
 }
 ```
 
+## Costs
+
+```text
+ Monthly cost estimate
+
+Project: .
+
+ Name                                                                       Monthly Qty  Unit                Monthly Cost
+
+ module.cloudfront.aws_acm_certificate.cert
+ └─ Certificate                                                                       1  requests                   $0.75
+
+ module.cloudfront.aws_cloudfront_distribution.website
+ ├─ Field level encryption requests                                     Cost depends on usage: $0.02 per 10k requests
+ ├─ Real-time log requests                                              Cost depends on usage: $0.01 per 1M lines
+ ├─ Dedicated IP custom SSLs                                            Cost depends on usage: $600.00 per certificates
+ ├─ Invalidation requests (first 1k)                                    Cost depends on usage: $0 per paths
+ ├─ Data transfer out to internet
+ │  ├─ US, Mexico, Canada (first 10TB)                                  Cost depends on usage: $0.09 per GB
+ │  ├─ Europe, Israel (first 10TB)                                      Cost depends on usage: $0.09 per GB
+ │  ├─ South Africa, Kenya, Middle East (first 10TB)                    Cost depends on usage: $0.11 per GB
+ │  ├─ South America (first 10TB)                                       Cost depends on usage: $0.11 per GB
+ │  ├─ Japan (first 10TB)                                               Cost depends on usage: $0.11 per GB
+ │  ├─ Australia, New Zealand (first 10TB)                              Cost depends on usage: $0.11 per GB
+ │  ├─ Hong Kong, Philippines, Asia Pacific (first 10TB)                Cost depends on usage: $0.12 per GB
+ │  └─ India (first 10TB)                                               Cost depends on usage: $0.11 per GB
+ ├─ Data transfer out to origin
+ │  ├─ US, Mexico, Canada                                               Cost depends on usage: $0.02 per GB
+ │  ├─ Europe, Israel                                                   Cost depends on usage: $0.02 per GB
+ │  ├─ South Africa, Kenya, Middle East                                 Cost depends on usage: $0.06 per GB
+ │  ├─ South America                                                    Cost depends on usage: $0.13 per GB
+ │  ├─ Japan                                                            Cost depends on usage: $0.06 per GB
+ │  ├─ Australia, New Zealand                                           Cost depends on usage: $0.08 per GB
+ │  ├─ Hong Kong, Philippines, Asia Pacific                             Cost depends on usage: $0.06 per GB
+ │  └─ India                                                            Cost depends on usage: $0.16 per GB
+ ├─ HTTP requests
+ │  ├─ US, Mexico, Canada                                               Cost depends on usage: $0.0075 per 10k requests
+ │  ├─ Europe, Israel                                                   Cost depends on usage: $0.009 per 10k requests
+ │  ├─ South Africa, Kenya, Middle East                                 Cost depends on usage: $0.009 per 10k requests
+ │  ├─ South America                                                    Cost depends on usage: $0.02 per 10k requests
+ │  ├─ Japan                                                            Cost depends on usage: $0.009 per 10k requests
+ │  ├─ Australia, New Zealand                                           Cost depends on usage: $0.009 per 10k requests
+ │  ├─ Hong Kong, Philippines, Asia Pacific                             Cost depends on usage: $0.009 per 10k requests
+ │  └─ India                                                            Cost depends on usage: $0.009 per 10k requests
+ ├─ HTTPS requests
+ │  ├─ US, Mexico, Canada                                               Cost depends on usage: $0.01 per 10k requests
+ │  ├─ Europe, Israel                                                   Cost depends on usage: $0.01 per 10k requests
+ │  ├─ South Africa, Kenya, Middle East                                 Cost depends on usage: $0.01 per 10k requests
+ │  ├─ South America                                                    Cost depends on usage: $0.02 per 10k requests
+ │  ├─ Japan                                                            Cost depends on usage: $0.01 per 10k requests
+ │  ├─ Australia, New Zealand                                           Cost depends on usage: $0.01 per 10k requests
+ │  ├─ Hong Kong, Philippines, Asia Pacific                             Cost depends on usage: $0.01 per 10k requests
+ │  └─ India                                                            Cost depends on usage: $0.01 per 10k requests
+ └─ Origin shield HTTP requests
+    ├─ US                                                               Cost depends on usage: $0.0075 per 10k requests
+    ├─ Europe                                                           Cost depends on usage: $0.009 per 10k requests
+    ├─ South America                                                    Cost depends on usage: $0.02 per 10k requests
+    ├─ Japan                                                            Cost depends on usage: $0.009 per 10k requests
+    ├─ Australia                                                        Cost depends on usage: $0.009 per 10k requests
+    ├─ Singapore                                                        Cost depends on usage: $0.009 per 10k requests
+    ├─ South Korea                                                      Cost depends on usage: $0.009 per 10k requests
+    └─ India                                                            Cost depends on usage: $0.009 per 10k requests
+
+ module.cloudfront.aws_route53_record.cert_validation["freebeer.site"]
+ ├─ Standard queries (first 1B)                                         Cost depends on usage: $0.40 per 1M queries
+ ├─ Latency based routing queries (first 1B)                            Cost depends on usage: $0.60 per 1M queries
+ └─ Geo DNS queries (first 1B)                                          Cost depends on usage: $0.70 per 1M queries
+
+ module.cloudfront.aws_s3_bucket.logging
+ └─ Standard
+    ├─ Storage                                                          Cost depends on usage: $0.02 per GB-months
+    ├─ PUT, COPY, POST, LIST requests                                   Cost depends on usage: $0.0053 per 1k requests
+    ├─ GET, SELECT, and all other requests                              Cost depends on usage: $0.00042 per 1k requests
+    ├─ Select data scanned                                              Cost depends on usage: $0.00225 per GB-months
+    └─ Select data returned                                             Cost depends on usage: $0.0008 per GB-months
+
+ module.cloudfront.aws_s3_bucket.website
+ └─ Standard
+    ├─ Storage                                                          Cost depends on usage: $0.02 per GB-months
+    ├─ PUT, COPY, POST, LIST requests                                   Cost depends on usage: $0.0053 per 1k requests
+    ├─ GET, SELECT, and all other requests                              Cost depends on usage: $0.00042 per 1k requests
+    ├─ Select data scanned                                              Cost depends on usage: $0.00225 per GB-months
+    └─ Select data returned                                             Cost depends on usage: $0.0008 per GB-months
+
+ PROJECT TOTAL                                                                                                      $0.75
+```
+
 The default TTL values have been set very low, you will override these (but oh so helpful for development), for a more effective cache.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=0.14.8 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 3.42.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-| <a name="provider_aws.useastone"></a> [aws.useastone](#provider\_aws.useastone) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.42.0 |
+| <a name="provider_aws.useastone"></a> [aws.useastone](#provider\_aws.useastone) | 3.42.0 |
 
 ## Modules
 
@@ -51,18 +141,19 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_acm_certificate.cert](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) | resource |
-| [aws_acm_certificate_validation.cert](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) | resource |
-| [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution) | resource |
-| [aws_cloudfront_origin_access_identity.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_identity) | resource |
-| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_route53_record.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
-| [aws_s3_bucket.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_object.index](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object) | resource |
-| [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
-| [aws_iam_policy_document.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/route53_zone) | data source |
+| [aws_acm_certificate.cert](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate_validation.cert](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/acm_certificate_validation) | resource |
+| [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/cloudfront_distribution) | resource |
+| [aws_cloudfront_origin_access_identity.website](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/cloudfront_origin_access_identity) | resource |
+| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/route53_record) | resource |
+| [aws_route53_record.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/route53_record) | resource |
+| [aws_s3_bucket.logging](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_object.index](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket_object) | resource |
+| [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_public_access_block.logging](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_iam_policy_document.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
 
