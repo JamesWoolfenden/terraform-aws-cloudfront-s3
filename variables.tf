@@ -42,12 +42,6 @@ variable "locations" {
   default     = ["GB"]
 }
 
-variable "web_acl_id" {
-  description = "If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution"
-  default     = ""
-  type        = string
-}
-
 variable "cloudfront_default_certificate" {
   description = "use default SSL certificate"
   type        = bool
@@ -113,4 +107,9 @@ variable "retain" {
   type        = bool
   description = "Do you want to retain the distribution on delete?"
   default     = false
+}
+
+variable "web_acl_id" {
+  type        = string
+  description = "The id of the WAF"
 }

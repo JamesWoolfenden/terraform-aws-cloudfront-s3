@@ -1,5 +1,6 @@
 resource "aws_cloudfront_distribution" "website" {
   provider = aws.useastone
+
   origin {
     domain_name = aws_s3_bucket.website.bucket_regional_domain_name
     origin_id   = "${aws_s3_bucket.website.id}-origin"
@@ -34,8 +35,8 @@ resource "aws_cloudfront_distribution" "website" {
   }
 
   default_cache_behavior {
-    allowed_methods = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-
+    allowed_methods            = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.pass.id
 
     cached_methods = [
       "GET",
@@ -119,6 +120,8 @@ resource "aws_cloudfront_distribution" "website" {
     # tfsec:ignore:AWS021
     minimum_protocol_version = "TLSv1.2_2018"
   }
+
+
   retain_on_delete = var.retain
   tags             = var.common_tags
 }

@@ -4,7 +4,9 @@ module "cloudfront" {
   providers = {
     aws.useastone = aws.useastone
   }
-  bucket_name = var.bucket_name
-  fqdn        = var.fqdn
-  zone        = var.zone
+  bucket_name        = var.bucket_name
+  header_policy_name = "examplea"
+  fqdn               = var.fqdn
+  zone               = var.zone
+  web_acl_id         = module.waf2.aws_wafv2_web_acl.id
 }

@@ -124,14 +124,14 @@ The default TTL values have been set very low, you will override these (but oh s
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=0.14.8 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 3.42.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 3.71.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.42.0 |
-| <a name="provider_aws.useastone"></a> [aws.useastone](#provider\_aws.useastone) | 3.42.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.71.0 |
+| <a name="provider_aws.useastone"></a> [aws.useastone](#provider\_aws.useastone) | 3.71.0 |
 
 ## Modules
 
@@ -141,19 +141,20 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_acm_certificate.cert](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/acm_certificate) | resource |
-| [aws_acm_certificate_validation.cert](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/acm_certificate_validation) | resource |
-| [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/cloudfront_distribution) | resource |
-| [aws_cloudfront_origin_access_identity.website](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/cloudfront_origin_access_identity) | resource |
-| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/route53_record) | resource |
-| [aws_s3_bucket.logging](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_object.index](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket_object) | resource |
-| [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket_policy) | resource |
-| [aws_s3_bucket_public_access_block.logging](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_iam_policy_document.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/data-sources/iam_policy_document) | data source |
-| [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/3.42.0/docs/data-sources/route53_zone) | data source |
+| [aws_acm_certificate.cert](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate_validation.cert](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/acm_certificate_validation) | resource |
+| [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/cloudfront_distribution) | resource |
+| [aws_cloudfront_origin_access_identity.website](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/cloudfront_origin_access_identity) | resource |
+| [aws_cloudfront_response_headers_policy.pass](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/cloudfront_response_headers_policy) | resource |
+| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/route53_record) | resource |
+| [aws_route53_record.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/route53_record) | resource |
+| [aws_s3_bucket.logging](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_object.index](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/s3_bucket_object) | resource |
+| [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_public_access_block.logging](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_iam_policy_document.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/3.71.0/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
 
@@ -177,7 +178,7 @@ No modules.
 | <a name="input_sse_algorithm"></a> [sse\_algorithm](#input\_sse\_algorithm) | The type of encryption algorithm to use | `string` | `"aws:kms"` | no |
 | <a name="input_ttl"></a> [ttl](#input\_ttl) | n/a | `string` | `"300"` | no |
 | <a name="input_versioning"></a> [versioning](#input\_versioning) | Switch to control versioning | `bool` | `true` | no |
-| <a name="input_web_acl_id"></a> [web\_acl\_id](#input\_web\_acl\_id) | If a WAF is being used - the Id of the AWS WAF web ACL that is associated with the distribution | `string` | `""` | no |
+| <a name="input_web_acl_id"></a> [web\_acl\_id](#input\_web\_acl\_id) | The id of the WAF | `string` | n/a | yes |
 | <a name="input_zone"></a> [zone](#input\_zone) | The route53 zone to use | `string` | n/a | yes |
 
 ## Outputs
