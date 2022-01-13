@@ -17,3 +17,4 @@ variable "zone" {
   type        = string
   description = "zone is not always the root of fqdn"
 }
+

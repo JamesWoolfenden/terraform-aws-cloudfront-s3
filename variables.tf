@@ -113,3 +113,8 @@ variable "web_acl_id" {
   type        = string
   description = "The id of the WAF"
 }
+
+variable "header_policy_name" {
+  type=string
+  
+}
