@@ -115,6 +115,6 @@ variable "web_acl_id" {
 }
 
 variable "header_policy_name" {
-  type=string
-  
+  type = string
+
 }
