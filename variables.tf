@@ -19,8 +19,8 @@ variable "bucket_acl" {
 }
 
 variable "versioning" {
-  type        = bool
-  default     = true
+  type        = string
+  default     = "Enabled"
   description = "Switch to control versioning"
 }
 
@@ -116,5 +116,9 @@ variable "web_acl_id" {
 
 variable "header_policy_name" {
   type = string
+
+}
+
+variable "kms_key" {
 
 }
