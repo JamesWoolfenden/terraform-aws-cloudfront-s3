@@ -14,13 +14,10 @@ resource "aws_s3_bucket" "logging" {
     ignore_changes = [tags]
   }
 }
-
-
 resource "aws_s3_bucket_acl" "logging" {
   bucket = aws_s3_bucket.logging.bucket
   acl    = "log-delivery-write"
 }
-
 resource "aws_s3_bucket_server_side_encryption_configuration" "logging" {
   bucket = aws_s3_bucket.logging.bucket
   rule {
@@ -31,7 +28,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "logging" {
   }
 
 }
-
 resource "aws_s3_bucket_versioning" "logging" {
   bucket = aws_s3_bucket.logging.id
   versioning_configuration {
@@ -39,8 +35,6 @@ resource "aws_s3_bucket_versioning" "logging" {
     mfa_delete = "Disabled"
   }
 }
-
-
 resource "aws_s3_bucket_lifecycle_configuration" "logging" {
   bucket = aws_s3_bucket.logging.id
 

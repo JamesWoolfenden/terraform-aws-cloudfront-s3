@@ -125,7 +125,6 @@ resource "aws_cloudfront_distribution" "website" {
   retain_on_delete = var.retain
   tags             = var.common_tags
 }
-
 locals {
   s3_origin_id = "mysecondprivatebucket.s3.amazonaws.com"
 }

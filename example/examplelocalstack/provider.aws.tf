@@ -32,8 +32,6 @@ provider "aws" {
     sts            = "http://localhost:4566"
   }
 }
-
-
 provider "aws" {
   alias  = "useastone"
   region = "us-east-1"

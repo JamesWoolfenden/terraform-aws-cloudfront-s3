@@ -9,7 +9,6 @@ resource "aws_acm_certificate" "cert" {
     create_before_destroy = true
   }
 }
-
 resource "aws_route53_record" "cert_validation" {
 
   for_each = {
@@ -27,7 +26,6 @@ resource "aws_route53_record" "cert_validation" {
   ttl             = 60
   type            = each.value.type
 }
-
 resource "aws_acm_certificate_validation" "cert" {
   provider                = aws.useastone
   certificate_arn         = aws_acm_certificate.cert.arn

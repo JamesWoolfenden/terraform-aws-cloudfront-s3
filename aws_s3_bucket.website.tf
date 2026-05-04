@@ -13,12 +13,10 @@ resource "aws_s3_bucket" "website" {
 
   tags = var.common_tags
 }
-
 resource "aws_s3_bucket_acl" "website" {
   bucket = aws_s3_bucket.website.bucket
   acl    = "private"
 }
-
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.website.bucket
 
@@ -39,22 +37,18 @@ resource "aws_s3_bucket_website_configuration" "website" {
     }
   }
 }
-
 resource "aws_s3_bucket_logging" "website" {
   bucket = aws_s3_bucket.website.id
 
   target_bucket = aws_s3_bucket.logging.id
   target_prefix = "log/"
 }
-
 resource "aws_s3_bucket_versioning" "website" {
   bucket = aws_s3_bucket.website.id
   versioning_configuration {
     status = var.versioning
   }
 }
-
-
 resource "aws_s3_bucket_cors_configuration" "website" {
   bucket = aws_s3_bucket.website.bucket
 
