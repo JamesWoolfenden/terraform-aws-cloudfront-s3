@@ -1,5 +1,7 @@
 # tfsec:ignore:AWS017
 resource "aws_s3_bucket" "website" {
+  # checkov:skip=CKV2_AWS_61: Lifecycle configuration not required for this bucket
+  # checkov:skip=CKV2_AWS_62: Event notifications not required for this bucket
   # checkov:skip=CKV_AWS_18: v4 legacy
   # checkov:skip=CKV2_AWS_40: Its a website
   # checkov:skip=CKV2_AWS_6: ADD REASON
