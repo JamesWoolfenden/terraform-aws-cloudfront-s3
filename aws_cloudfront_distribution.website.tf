@@ -1,4 +1,6 @@
 resource "aws_cloudfront_distribution" "website" {
+  # checkov:skip=CKV_AWS_310: origin failover left to consumer
+  # checkov:skip=CKV2_AWS_47: WAF rules managed by attached web ACL
   provider = aws.useastone
 
   origin {
