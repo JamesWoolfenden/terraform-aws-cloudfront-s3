@@ -5,8 +5,6 @@
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/JamesWoolfenden/terraform-aws-cloudfront-s3.svg?label=latest)](https://github.com/JamesWoolfenden/terraform-aws-cloudfront-s3/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.14.0-blue.svg)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
-
 
 This Terraform module is to provision a private S3 bucket, and use it as a static website, and sit that behind a Cloudfront distribution.
 Certificate needs a delay adding before cloudfront uses it, until then run it twice.
@@ -15,15 +13,12 @@ Certificate needs a delay adding before cloudfront uses it, until then run it tw
 
 Creates a static site with cloudfront distribution in front.
 
-![alt text](./diagram/static_site.png)
-
 To use, add **module.cloudfront.tf** to your template and update your variables and values, see _example/examplea_ for a full worked example.
 
 ```hcl
 module "cloudfront" {
   source       = "JamesWoolfenden/cloudfront-s3/aws"
   version      = "0.3.2"
-  common_tags = var.common_tags
   bucket_name = var.bucket_name
 }
 ```
@@ -33,17 +28,14 @@ The default TTL values have been set very low, you will override these (but oh s
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-| Name | Version |
-| ---- | ------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >=0.14.8 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.43.0 |
+No requirements.
 
 ## Providers
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.43.0 |
-| <a name="provider_aws.useastone"></a> [aws.useastone](#provider\_aws.useastone) | 6.43.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws.useastone"></a> [aws.useastone](#provider\_aws.useastone) | n/a |
 
 ## Modules
 
@@ -53,53 +45,51 @@ No modules.
 
 | Name | Type |
 | ---- | ---- |
-| [aws_acm_certificate.cert](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/acm_certificate) | resource |
-| [aws_acm_certificate_validation.cert](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/acm_certificate_validation) | resource |
-| [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/cloudfront_distribution) | resource |
-| [aws_cloudfront_origin_access_identity.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/cloudfront_origin_access_identity) | resource |
-| [aws_cloudfront_response_headers_policy.pass](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/cloudfront_response_headers_policy) | resource |
-| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/route53_record) | resource |
-| [aws_s3_bucket.logging](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_acl.logging](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_acl) | resource |
-| [aws_s3_bucket_acl.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_acl) | resource |
-| [aws_s3_bucket_cors_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_cors_configuration) | resource |
-| [aws_s3_bucket_lifecycle_configuration.logging](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_lifecycle_configuration) | resource |
-| [aws_s3_bucket_logging.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_logging) | resource |
-| [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_policy) | resource |
-| [aws_s3_bucket_public_access_block.logging](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_server_side_encryption_configuration.logging](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
-| [aws_s3_bucket_versioning.logging](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_versioning) | resource |
-| [aws_s3_bucket_versioning.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_versioning) | resource |
-| [aws_s3_bucket_website_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_bucket_website_configuration) | resource |
-| [aws_s3_object.index](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/resources/s3_object) | resource |
-| [aws_iam_policy_document.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/data-sources/iam_policy_document) | data source |
-| [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/6.43.0/docs/data-sources/route53_zone) | data source |
+| [aws_acm_certificate.cert](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate_validation.cert](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/acm_certificate_validation) | resource |
+| [aws_cloudfront_distribution.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_distribution) | resource |
+| [aws_cloudfront_origin_access_identity.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_origin_access_identity) | resource |
+| [aws_cloudfront_response_headers_policy.pass](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudfront_response_headers_policy) | resource |
+| [aws_route53_record.cert_validation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_s3_bucket.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_acl.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_acl.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_cors_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_cors_configuration) | resource |
+| [aws_s3_bucket_lifecycle_configuration.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration) | resource |
+| [aws_s3_bucket_lifecycle_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration) | resource |
+| [aws_s3_bucket_logging.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_logging) | resource |
+| [aws_s3_bucket_policy.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_public_access_block.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_public_access_block.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_s3_bucket_server_side_encryption_configuration.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_s3_bucket_server_side_encryption_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_s3_bucket_versioning.logging](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
+| [aws_s3_bucket_versioning.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
+| [aws_s3_bucket_website_configuration.website](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration) | resource |
+| [aws_s3_object.index](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object) | resource |
+| [aws_iam_policy_document.cloudfront](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_route53_zone.selected](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/route53_zone) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_access_log_bucket"></a> [access\_log\_bucket](#input\_access\_log\_bucket) | Name of your access logging bucket | `string` | `"logging"` | no |
-| <a name="input_acm_certificate_arn"></a> [acm\_certificate\_arn](#input\_acm\_certificate\_arn) | The ARN of the certificate to be used | `string` | `""` | no |
-| <a name="input_bucket_acl"></a> [bucket\_acl](#input\_bucket\_acl) | n/a | `string` | `"Private"` | no |
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | name of the bucket | `string` | n/a | yes |
 | <a name="input_cloudfront_default_certificate"></a> [cloudfront\_default\_certificate](#input\_cloudfront\_default\_certificate) | use default SSL certificate | `bool` | `false` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Implements the common tags scheme | `map(any)` | n/a | yes |
 | <a name="input_default_ttl"></a> [default\_ttl](#input\_default\_ttl) | default ttl values | `number` | `90` | no |
-| <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | n/a | `bool` | `true` | no |
+| <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Whether to allow the S3 buckets to be destroyed even when they contain objects | `bool` | `true` | no |
 | <a name="input_fqdn"></a> [fqdn](#input\_fqdn) | The fully qualified domain Name | `string` | n/a | yes |
-| <a name="input_header_policy_name"></a> [header\_policy\_name](#input\_header\_policy\_name) | n/a | `string` | n/a | yes |
-| <a name="input_kms_key"></a> [kms\_key](#input\_kms\_key) | n/a | `any` | n/a | yes |
+| <a name="input_header_policy_name"></a> [header\_policy\_name](#input\_header\_policy\_name) | Name of the CloudFront response headers policy | `string` | n/a | yes |
+| <a name="input_kms_key"></a> [kms\_key](#input\_kms\_key) | The KMS key used to encrypt the website bucket | `object({ id = string })` | n/a | yes |
 | <a name="input_locations"></a> [locations](#input\_locations) | Locations for the Distribution | `list(any)` | <pre>[<br/>  "GB"<br/>]</pre> | no |
 | <a name="input_max_ttl"></a> [max\_ttl](#input\_max\_ttl) | max ttl values | `number` | `300` | no |
 | <a name="input_min_ttl"></a> [min\_ttl](#input\_min\_ttl) | min ttl values | `number` | `30` | no |
-| <a name="input_price_class"></a> [price\_class](#input\_price\_class) | n/a | `string` | `"PriceClass_100"` | no |
-| <a name="input_restriction_type"></a> [restriction\_type](#input\_restriction\_type) | n/a | `string` | `"whitelist"` | no |
+| <a name="input_price_class"></a> [price\_class](#input\_price\_class) | CloudFront price class controlling which edge locations serve the distribution | `string` | `"PriceClass_100"` | no |
+| <a name="input_restriction_type"></a> [restriction\_type](#input\_restriction\_type) | The CloudFront geo-restriction type to apply to locations | `string` | `"whitelist"` | no |
 | <a name="input_retain"></a> [retain](#input\_retain) | Do you want to retain the distribution on delete? | `bool` | `false` | no |
 | <a name="input_sse_algorithm"></a> [sse\_algorithm](#input\_sse\_algorithm) | The type of encryption algorithm to use | `string` | `"aws:kms"` | no |
-| <a name="input_ttl"></a> [ttl](#input\_ttl) | n/a | `string` | `"300"` | no |
 | <a name="input_versioning"></a> [versioning](#input\_versioning) | Switch to control versioning | `string` | `"Enabled"` | no |
 | <a name="input_web_acl_id"></a> [web\_acl\_id](#input\_web\_acl\_id) | The id of the WAF | `string` | n/a | yes |
 | <a name="input_zone"></a> [zone](#input\_zone) | The route53 zone to use | `string` | n/a | yes |
@@ -108,11 +98,11 @@ No modules.
 
 | Name | Description |
 | ---- | ----------- |
-| <a name="output_distribution"></a> [distribution](#output\_distribution) | n/a |
-| <a name="output_identity"></a> [identity](#output\_identity) | n/a |
-| <a name="output_logging"></a> [logging](#output\_logging) | n/a |
-| <a name="output_policy"></a> [policy](#output\_policy) | n/a |
-| <a name="output_website"></a> [website](#output\_website) | n/a |
+| <a name="output_distribution"></a> [distribution](#output\_distribution) | The CloudFront distribution serving the website |
+| <a name="output_identity"></a> [identity](#output\_identity) | The CloudFront origin access identity used to access the website bucket |
+| <a name="output_logging"></a> [logging](#output\_logging) | The S3 bucket receiving access logs for the website bucket |
+| <a name="output_policy"></a> [policy](#output\_policy) | The IAM policy document JSON granting CloudFront access to the website bucket |
+| <a name="output_website"></a> [website](#output\_website) | The S3 bucket serving as the CloudFront origin for the website |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Policy
@@ -121,6 +111,7 @@ No modules.
 The Terraform resource required is:
 
 ```golang
+# apply role — full permissions for terraform apply
 resource "aws_iam_policy" "terraform_pike" {
   name_prefix = "terraform_pike"
   path        = "/"
@@ -133,12 +124,10 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "acm:AddTagsToCertificate",
                 "acm:DeleteCertificate",
                 "acm:DescribeCertificate",
                 "acm:GetCertificate",
                 "acm:ListTagsForCertificate",
-                "acm:RemoveTagsFromCertificate",
                 "acm:RequestCertificate"
             ],
             "Resource": [
@@ -161,8 +150,6 @@ resource "aws_iam_policy" "terraform_pike" {
                 "cloudfront:GetDistributionConfig",
                 "cloudfront:GetResponseHeadersPolicy",
                 "cloudfront:ListTagsForResource",
-                "cloudfront:TagResource",
-                "cloudfront:UntagResource",
                 "cloudfront:UpdateDistribution",
                 "cloudfront:UpdateDistributionWithStagingConfig",
                 "cloudfront:UpdateResponseHeadersPolicy"
@@ -230,7 +217,6 @@ resource "aws_iam_policy" "terraform_pike" {
                 "s3:PutBucketLogging",
                 "s3:PutBucketPolicy",
                 "s3:PutBucketPublicAccessBlock",
-                "s3:PutBucketTagging",
                 "s3:PutBucketVersioning",
                 "s3:PutBucketWebsite",
                 "s3:PutEncryptionConfiguration",
@@ -245,26 +231,48 @@ resource "aws_iam_policy" "terraform_pike" {
 })
 }
 
+# plan role — read-only permissions for terraform plan
+resource "aws_iam_policy" "terraform_pike_plan" {
+  name_prefix = "terraform_pike_plan"
+  path        = "/"
+  description = "Pike Autogenerated policy from IAC"
+
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetAccelerateConfiguration",
+                "s3:GetBucketAcl",
+                "s3:GetBucketCORS",
+                "s3:GetBucketLogging",
+                "s3:GetBucketObjectLockConfiguration",
+                "s3:GetBucketPolicy",
+                "s3:GetBucketRequestPayment",
+                "s3:GetBucketTagging",
+                "s3:GetBucketVersioning",
+                "s3:GetBucketWebsite",
+                "s3:GetEncryptionConfiguration",
+                "s3:GetLifecycleConfiguration",
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:GetReplicationConfiguration",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+})
+}
+
 
 ```
 <!-- END OF PRE-COMMIT-PIKE DOCS HOOK -->
 
-## Checkov Exclusion
-
-I have added:
-
-```checkov
-  #checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
-  #checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
-```
-
-As we will want to deploy to this bucket and it needs to be readable to the world if it's a website.
-There are also some exceptions on the logging bucket, e.g. logging of the logging bucket.
-
-## new checks
-
-Address
-<https://github.com/bridgecrewio/checkov/issues/146>
 
 ## Related Projects
 
@@ -286,7 +294,7 @@ Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-
 
 ## Copyrights
 
-Copyright © 2019-2022 James Woolfenden
+Copyright © 2019-2026 James Woolfenden
 
 ## License
 

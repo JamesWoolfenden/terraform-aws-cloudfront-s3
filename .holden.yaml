@@ -1,0 +1,13 @@
+skip_policies:
+  - HLD_TF_027 # single variables.tf is this project's convention; splitting the ~25 tightly-related CloudFront variables adds indirection without benefit
+  - HLD_TF_026 # source = "../../" is intentional: this example exists specifically to exercise the local module source in-repo
+  - HLD_TF_029 # bundling S3 + CloudFront + ACM + Route53 + IAM policy into one "static website hosting" workspace is this module's intentional value proposition; the IAM permission count is inherent to that scope
+  - HLD_TF_073 # same rationale as HLD_TF_029 - the resource-type-concern count reflects the intentional bundled scope, not accidental sprawl
+
+policies:
+  - .holden/policies
+scan_roots:
+  - path: .
+    targets: [gha]
+  - path: example/examplea
+    targets: [terraform]

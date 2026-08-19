@@ -1,15 +1,24 @@
 output "distribution" {
-  value = module.cloudfront.distribution
+  description = "The CloudFront distribution serving the website"
+  value       = module.cloudfront.distribution
 }
+
 output "identity" {
-  value = module.cloudfront.identity
+  description = "The CloudFront origin access identity used to access the website bucket"
+  value       = module.cloudfront.identity
 }
+
 output "policy" {
-  value = module.cloudfront.policy
+  description = "The IAM policy document JSON granting CloudFront access to the website bucket"
+  value       = module.cloudfront.policy
 }
+
 output "website" {
-  value = module.cloudfront.website
+  description = "The S3 bucket serving as the CloudFront origin for the website"
+  value       = module.cloudfront.website
 }
+
 output "logging" {
-  value = module.cloudfront.logging
+  description = "The S3 bucket receiving access logs for the website bucket"
+  value       = module.cloudfront.logging
 }

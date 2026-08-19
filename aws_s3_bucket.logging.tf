@@ -1,14 +1,6 @@
-# tfsec:ignore:AWS077
+
 resource "aws_s3_bucket" "logging" {
-  # checkov:skip=CKV2_AWS_61: Lifecycle configuration not required for this bucket
-  # checkov:skip=CKV2_AWS_62: Event notifications not required for this bucket
-  # checkov:skip=CKV_AWS_145: ADD REASON
-  # checkov:skip=CKV_AWS_144: ADD REASON
-  # checkov:skip=CKV_AWS_145: v4 legacy
-  # checkov:skip=CKV_AWS_19: v4 legacy
-  # checkov:skip=CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
-  # checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
-  # checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
+
   bucket = "${var.bucket_name}-logging"
 
 
@@ -16,20 +8,23 @@ resource "aws_s3_bucket" "logging" {
     ignore_changes = [tags]
   }
 }
+
 resource "aws_s3_bucket_acl" "logging" {
   bucket = aws_s3_bucket.logging.bucket
   acl    = "log-delivery-write"
 }
+
 resource "aws_s3_bucket_server_side_encryption_configuration" "logging" {
   bucket = aws_s3_bucket.logging.bucket
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm     = "aws:kms"
-      kms_master_key_id = var.kms_key.id
+      sse_algorithm     = var.sse_algorithm
+      kms_master_key_id = var.sse_algorithm == "aws:kms" ? var.kms_key.id : null
     }
   }
 
 }
+
 resource "aws_s3_bucket_versioning" "logging" {
   bucket = aws_s3_bucket.logging.id
   versioning_configuration {

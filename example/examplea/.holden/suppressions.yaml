@@ -1,0 +1,30 @@
+suppressions:
+  - policy_id: HLD_AWS_214
+    resource_id: aws_kms_key.site
+    reason: "Example-only key; access is granted via IAM policy, not the KMS key policy (see the CKV2_AWS_64 checkov skip on the same resource)."
+    approved_by: james.woolfenden@gmail.com
+
+  - policy_id: HLD_AWS_214
+    resource_id: aws_kms_key.waf
+    reason: "Example-only key; access is granted via IAM policy, not the KMS key policy (see the CKV2_AWS_64 checkov skip on the same resource)."
+    approved_by: james.woolfenden@gmail.com
+
+  - policy_id: HLD_TF_041
+    resource_id: aws_kms_key.site
+    reason: "This example is a destroyable test fixture (Makefile 'destroy'/'purge' targets run terraform destroy); prevent_destroy would break that workflow."
+    approved_by: james.woolfenden@gmail.com
+
+  - policy_id: HLD_TF_041
+    resource_id: aws_kms_key.waf
+    reason: "This example is a destroyable test fixture (Makefile 'destroy'/'purge' targets run terraform destroy); prevent_destroy would break that workflow."
+    approved_by: james.woolfenden@gmail.com
+
+  - policy_id: HLD_AWS_144
+    resource_id: module.cloudfront.aws_s3_bucket.logging
+    reason: "This is the cloudfront module's terminal access-logging bucket; it does not log its own access to avoid a self-referential/circular logging loop and unnecessary storage cost. No second dedicated bucket exists to receive its logs."
+    approved_by: james.woolfenden@gmail.com
+
+  - policy_id: HLD_AWS_305
+    resource_id: module.cloudfront.aws_cloudfront_distribution.website
+    reason: "Single-origin architecture is intentional; origin failover is left to the consumer to add if their use case needs it (matches the pre-existing checkov:skip=CKV_AWS_310 comment on this resource)."
+    approved_by: james.woolfenden@gmail.com

@@ -1,6 +1,4 @@
 resource "aws_cloudfront_distribution" "website" {
-  # checkov:skip=CKV_AWS_310: origin failover left to consumer
-  # checkov:skip=CKV2_AWS_47: WAF rules managed by attached web ACL
   provider = aws.useastone
 
   origin {
@@ -39,6 +37,7 @@ resource "aws_cloudfront_distribution" "website" {
   default_cache_behavior {
     allowed_methods            = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     response_headers_policy_id = aws_cloudfront_response_headers_policy.pass.id
+    compress                   = true
 
     cached_methods = [
       "GET",
@@ -119,14 +118,9 @@ resource "aws_cloudfront_distribution" "website" {
     cloudfront_default_certificate = var.cloudfront_default_certificate
     acm_certificate_arn            = aws_acm_certificate.cert.arn
     ssl_support_method             = "sni-only"
-    # tfsec:ignore:AWS021
-    minimum_protocol_version = "TLSv1.2_2018"
+    minimum_protocol_version       = "TLSv1.2_2018"
   }
 
 
   retain_on_delete = var.retain
-  tags             = var.common_tags
-}
-locals {
-  s3_origin_id = "mysecondprivatebucket.s3.amazonaws.com"
 }

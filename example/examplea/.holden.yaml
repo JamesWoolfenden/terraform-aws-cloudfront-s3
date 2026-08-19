@@ -1,0 +1,5 @@
+skip_policies:
+  - HLD_TF_027 # single variables.tf is this project's convention (see repo-root .holden.yaml)
+  - HLD_TF_026 # source = "../../" is intentional: this example exists specifically to exercise the local module source in-repo
+  - HLD_TF_029 # this example intentionally wires up the full cloudfront + waf2 composition end-to-end; the IAM permission count is inherent to that scope
+  - HLD_TF_073 # same rationale as HLD_TF_029 - the resource-type-concern count reflects the intentional bundled scope, not accidental sprawl

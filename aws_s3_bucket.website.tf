@@ -1,24 +1,16 @@
-# tfsec:ignore:AWS017
+
 resource "aws_s3_bucket" "website" {
-  # checkov:skip=CKV2_AWS_61: Lifecycle configuration not required for this bucket
-  # checkov:skip=CKV2_AWS_62: Event notifications not required for this bucket
-  # checkov:skip=CKV_AWS_18: v4 legacy
-  # checkov:skip=CKV2_AWS_40: Its a website
-  # checkov:skip=CKV2_AWS_6: ADD REASON
-  # checkov:skip=CKV_AWS_144: Its a website
-  # checkov:skip=CKV_AWS_145: Its a website
-  # checkov:skip=CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
-  # checkov:skip=CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
-  # checkov:skip=CKV_AWS_52: "Ensure S3 bucket has MFA delete enabled"
   bucket        = var.bucket_name
   force_destroy = var.force_destroy
 
-  tags = var.common_tags
+
 }
+
 resource "aws_s3_bucket_acl" "website" {
   bucket = aws_s3_bucket.website.bucket
   acl    = "private"
 }
+
 resource "aws_s3_bucket_website_configuration" "website" {
   bucket = aws_s3_bucket.website.bucket
 
@@ -39,18 +31,53 @@ resource "aws_s3_bucket_website_configuration" "website" {
     }
   }
 }
+
 resource "aws_s3_bucket_logging" "website" {
   bucket = aws_s3_bucket.website.id
 
   target_bucket = aws_s3_bucket.logging.id
   target_prefix = "log/"
 }
+
 resource "aws_s3_bucket_versioning" "website" {
   bucket = aws_s3_bucket.website.id
   versioning_configuration {
     status = var.versioning
   }
 }
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "website" {
+  bucket = aws_s3_bucket.website.bucket
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = var.sse_algorithm
+      kms_master_key_id = var.sse_algorithm == "aws:kms" ? var.kms_key.id : null
+    }
+  }
+}
+
+resource "aws_s3_bucket_public_access_block" "website" {
+  bucket = aws_s3_bucket.website.id
+
+  restrict_public_buckets = true
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "website" {
+  bucket = aws_s3_bucket.website.id
+
+  rule {
+    id     = "abort-incomplete-uploads"
+    status = "Enabled"
+
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 7
+    }
+  }
+}
+
 resource "aws_s3_bucket_cors_configuration" "website" {
   bucket = aws_s3_bucket.website.bucket
 
